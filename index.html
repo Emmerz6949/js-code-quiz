@@ -4,10 +4,20 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Javascript Code Quiz</title>
+    <title>JavaScript Code Quiz</title>
 </head>
 <body>
-
+    <header>
+        <nav class="navbar navbar-expand flex-column flex-md-row font-weight-bold">
+            <span class="navbar-brand" id="viewHighscore">View Highscores</span>
+            <span class="navbar-text ml-md-auto" id="timer">Time: 0</span>
+        </nav>
+    </header>
+    <main class="text-center font-weight-bold">
+        <h1>Coding Quiz Challenge</h1>
+        <p class="px-5 py-2">Try to answer the following JavaScript-related questions within the time limit. Keep in mind that incorrect answers will penalize score/time by ten seconds!</p>
+        <button type="button" class="btn" id="start">Start Quiz</button>
+    </main>
 
 
 

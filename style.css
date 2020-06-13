@@ -11,3 +11,7 @@ button:hover {
     background-color: rebeccapurple !important;
     border: 2px solid purple;
 }
+
+section {
+    width: 500px;
+}

@@ -34,7 +34,41 @@ var questions = [
     }
   ];
 
-  var startBut = document.querySelector("#start");
-  var hOne = document.querySelector("h1");
-  var pgraph = document.querySelector("p");
-  var sect = document.querySelector("#container");
+var startBut = document.getElementById("start");
+var hOne = document.querySelector("h1");
+var pgraph = document.querySelector("p");
+var sect = document.querySelector("#container");
+
+startBut.addEventListener("click", function() {
+    pgraph.style.display = "none";
+    startBut.style.display = "none";
+    hOne.style.display = "none";
+    axQ(questions[0]);
+      
+});
+
+ function axQ (arrIndex) {
+    var hThree = document.createElement("h3");
+    hThree.textContent = arrIndex.title;
+    hThree.setAttribute("class", "text-md-left mb-3");
+    sect.appendChild(hThree);
+    var butOne = document.createElement("button");
+    butOne.textContent = arrIndex.choices[0];
+    sect.appendChild(butOne);
+    butOne.setAttribute("class", "btn d-md-block m-2 choice");
+
+    var butTwo = document.createElement("button");
+    butTwo.textContent = arrIndex.choices[1];
+    sect.appendChild(butTwo);
+    butTwo.setAttribute("class", "btn d-md-block m-2 choice");
+
+    var butThree = document.createElement("button");
+    butThree.textContent = arrIndex.choices[2];
+    sect.appendChild(butThree);
+    butThree.setAttribute("class", "btn d-md-block m-2 choice");
+
+    var butFour = document.createElement("button");
+    butFour.textContent = arrIndex.choices[3];
+    sect.appendChild(butFour);
+    butFour.setAttribute("class", "btn d-md-block m-2 choice");
+}

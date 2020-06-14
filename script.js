@@ -43,32 +43,67 @@ startBut.addEventListener("click", function() {
     pgraph.style.display = "none";
     startBut.style.display = "none";
     hOne.style.display = "none";
-    axQ(questions[0]);
-      
+    axQ(questions);
 });
 
- function axQ (arrIndex) {
+var i = 0;
+
+function axQ (arr) {
     var hThree = document.createElement("h3");
-    hThree.textContent = arrIndex.title;
+    hThree.textContent = arr[i].title;
     hThree.setAttribute("class", "text-md-left mb-3");
     sect.appendChild(hThree);
     var butOne = document.createElement("button");
-    butOne.textContent = arrIndex.choices[0];
+    butOne.textContent = arr[i].choices[0];
     sect.appendChild(butOne);
     butOne.setAttribute("class", "btn d-md-block m-2 choice");
 
     var butTwo = document.createElement("button");
-    butTwo.textContent = arrIndex.choices[1];
+    butTwo.textContent = arr[i].choices[1];
     sect.appendChild(butTwo);
     butTwo.setAttribute("class", "btn d-md-block m-2 choice");
 
     var butThree = document.createElement("button");
-    butThree.textContent = arrIndex.choices[2];
+    butThree.textContent = arr[i].choices[2];
     sect.appendChild(butThree);
     butThree.setAttribute("class", "btn d-md-block m-2 choice");
 
     var butFour = document.createElement("button");
-    butFour.textContent = arrIndex.choices[3];
+    butFour.textContent = arr[i].choices[3];
     sect.appendChild(butFour);
     butFour.setAttribute("class", "btn d-md-block m-2 choice");
+
+    var userPick = document.querySelectorAll(".choice");
+    for (a = 0; a < userPick.length; a++) {
+        userPick[a].addEventListener("click", function() {
+            var pick = event.target;
+            if (pick.textContent === arr[i].answer) {
+                setTimeout(function(){
+                    var line = document.createElement("hr");
+                    sect.appendChild(line);
+
+                    var yes = document.createElement("p");
+                    yes.textContent = "Correct!";
+                    sect.appendChild(yes);
+                }, 100);
+            
+            }
+            else {
+                setTimeout(function(){
+                    var lined = document.createElement("hr");
+                    sect.appendChild(lined);
+
+                    var no = document.createElement("p");
+                    no.textContent = "Wrong!";
+                    sect.appendChild(no);
+                }, 100);
+                
+            }
+            sect.innerHTML = "";
+            i++;
+            if (i < arr.length) {
+                axQ(questions);
+            }
+        });
+    }
 }

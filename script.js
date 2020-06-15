@@ -38,21 +38,30 @@ var startBut = document.getElementById("start");
 var hOne = document.querySelector("h1");
 var pgraph = document.querySelector("p");
 var sect = document.querySelector("#container");
+var timerSpan = document.getElementById("timer");
 
 startBut.addEventListener("click", function() {
     pgraph.style.display = "none";
     startBut.style.display = "none";
     hOne.style.display = "none";
+    countdown();
     axQ(questions);
+    
 });
 
 var i = 0;
+var gameOver = false;
+var wrongAns = false;
+var score = 0;
+
 
 function axQ (arr) {
+    
     var hThree = document.createElement("h3");
     hThree.textContent = arr[i].title;
     hThree.setAttribute("class", "text-md-left mb-3");
     sect.appendChild(hThree);
+
     var butOne = document.createElement("button");
     butOne.textContent = arr[i].choices[0];
     sect.appendChild(butOne);
@@ -83,27 +92,116 @@ function axQ (arr) {
                     sect.appendChild(line);
 
                     var yes = document.createElement("p");
-                    yes.textContent = "Correct!";
+                    yes.textContent = "Previous answer: CORRECT!";
                     sect.appendChild(yes);
+
+                    setTimeout(function(){
+                        line.style.display = "none";
+                        yes.style.display = "none";
+                    }, 1000);
                 }, 100);
-            
             }
             else {
+                wrongAns = true;
                 setTimeout(function(){
                     var lined = document.createElement("hr");
                     sect.appendChild(lined);
 
                     var no = document.createElement("p");
-                    no.textContent = "Wrong!";
+                    no.textContent = "Previous answer: WRONG!";
                     sect.appendChild(no);
+
+                    setTimeout(function(){
+                        lined.style.display = "none";
+                        no.style.display = "none";
+                    }, 1000);
+
                 }, 100);
-                
             }
             sect.innerHTML = "";
             i++;
             if (i < arr.length) {
                 axQ(questions);
             }
+            else {
+                var endHThree = document.createElement("h3");
+                endHThree.textContent = "All done!";
+                endHThree.setAttribute("class", "text-md-left mb-3");
+                sect.appendChild(endHThree);
+
+                gameOver = true;
+            }
         });
     }
 }
+
+function countdown() {
+    var timeLeft = 75;
+  
+    var timeInterval = setInterval(function() {
+      timerSpan.textContent = "Time: " + timeLeft;
+      timeLeft--;
+
+      if (wrongAns === true) {
+          timeLeft = timeLeft - 10;
+          wrongAns = false;
+      }
+  
+      if (timeLeft <= 0) {
+        sect.innerHTML = "";
+
+        timerSpan.textContent = "Time: 0";
+
+        var sadEndHThree = document.createElement("h3");
+        sadEndHThree.textContent = "You Ran Out Of Time!";
+        sadEndHThree.setAttribute("class", "text-md-left mb-3");
+        sect.appendChild(sadEndHThree);
+
+        var userScore = document.createElement("p");
+        userScore.textContent = "Your final score is " + score;
+        userScore.setAttribute("class", "text-md-left");
+        sect.appendChild(userScore);  
+
+        var pity = document.createElement("p");
+        pity.textContent = "To save you from embaressment we won't require you to enter your initials.";
+        pity.setAttribute("class", "text-md-left");
+        sect.appendChild(pity); 
+
+
+        clearInterval(timeInterval);
+      }
+      else if (gameOver === true) {
+          var lines = document.querySelector("hr");
+          lines.style.display = "none";
+
+          var newPGraph = document.querySelector("p");
+          newPGraph.style.display = "none";
+
+          score = timeLeft;
+
+          var userScore = document.createElement("p");
+          userScore.textContent = "Your final score is " + score;
+          userScore.setAttribute("class", "text-md-left");
+          sect.appendChild(userScore);  
+
+          var initials = document.createElement("p");
+          initials.textContent = "Enter Initials: ";
+          initials.setAttribute("class", "text-md-left");
+          sect.appendChild(initials);
+
+          var userName = document.createElement("input");
+          userName.setAttribute("type", "text");
+          initials.appendChild(userName);
+
+          var done = document.createElement("button");
+          done.textContent = "Submit";
+          done.setAttribute("class", "btn m-2");
+          initials.appendChild(done);
+         
+
+          timerSpan.textContent = "Time: 0";
+
+          clearInterval(timeInterval);
+      }
+    }, 1000);
+  }

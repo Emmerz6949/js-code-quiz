@@ -1,9 +1,13 @@
-nav {
-    color: purple;
+nav, #viewHighscore {
+    color: purple !important;
 }
 
 button {
     background-color: purple !important;
+    color: white !important;
+}
+
+#homeLink {
     color: white !important;
 }
 
@@ -22,4 +26,8 @@ input:focus {
     border-color:#80bdff;
     outline:0;
     box-shadow:0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+li {
+    background-color: lightslategray;
 }

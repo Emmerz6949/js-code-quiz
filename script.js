@@ -197,6 +197,24 @@ function countdown() {
           done.textContent = "Submit";
           done.setAttribute("class", "btn m-2");
           initials.appendChild(done);
+
+          var summonScore = JSON.parse(localStorage.getItem('highScore')) || [];
+
+          done.addEventListener("click", function() {
+            event.preventDefault()
+            var leScore = {
+                endScore: score,
+                name: userName.value.toUpperCase()
+            };
+            summonScore.push(leScore);
+            summonScore.sort(function(a, b) {
+                return b.endScore - a.endScore;
+            });
+        
+            localStorage.setItem('highScore', JSON.stringify(summonScore));
+
+            window.location.assign('highscore/scores.html');
+        });
          
 
           timerSpan.textContent = "Time: 0";
@@ -204,4 +222,4 @@ function countdown() {
           clearInterval(timeInterval);
       }
     }, 1000);
-  }
+}

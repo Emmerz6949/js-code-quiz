@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- linking to the reset css file, bootstrap, and a style css file in case I wanna 
+        style something differemt from what bootsstrap offers-->
     <link rel="stylesheet" href="../reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
+    <!-- page title as seen in the tab-->
     <title>JavaScript Code Quiz</title>
 </head>
 <body>
     <main class="text-center font-weight-bold">
         <section class="d-inline-block" id="containerTwo">
+            <!--the heading, an empty ordered list, a go back button that links 
+                back to index.html, and a clear highscores button-->
             <h1>Highscores</h1>
             <ol class="px-5 py-2 text-md-left" id="here"></ol>
             <button type="button" class="btn" id="home"><a href="../index.html" id="homeLink">Go Back</a></button>
@@ -18,6 +23,7 @@
 
 
 
+    <!--linkining to the scores javascript file-->
     <script src="scores.js"></script>
 </body>
 </html>

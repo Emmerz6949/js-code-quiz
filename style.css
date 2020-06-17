@@ -1,25 +1,32 @@
+/*styles the text color of text in the 
+nav bar as well as the text of the referenced link*/
 nav, #viewHighscore {
     color: purple !important;
 }
 
+/*styles the background color and text color of all butons*/
 button {
     background-color: purple !important;
     color: white !important;
 }
 
+/*styles the text color of the referenced link*/
 #homeLink {
     color: white !important;
 }
 
+/*styles how all buttons will look when you hover over them*/
 button:hover {
     background-color: rebeccapurple !important;
     border: 2px solid purple;
 }
 
+/*styles the width of all sections*/
 section {
     width: 500px;
 }
 
+/*styles how input looks when you click in the text area*/
 input:focus {
     color:#495057;
     background-color:#fff;
@@ -28,6 +35,7 @@ input:focus {
     box-shadow:0 0 0 .2rem rgba(0,123,255,.25);
 }
 
+/*styles the background color of all list items*/
 li {
     background-color: lightslategray;
 }

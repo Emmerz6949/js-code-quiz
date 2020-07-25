@@ -2,7 +2,7 @@
 
 ## Description
 
-This repostory was created so I could create a JavaScript Code Quiz that can save/erase the user's highscore, subtract their time when they answer incorrectly, and create/remove HTML elements using JavaScript.
+This repository was created so I could create a JavaScript Code Quiz that can save/erase the user's highscore, subtract their time when they answer incorrectly, and create/remove HTML elements using JavaScript.
 
 ![image](https://i.ibb.co/5nMpWtL/Java-Script-Code-Quiz.png)
 
